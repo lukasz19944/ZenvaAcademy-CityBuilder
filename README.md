@@ -10,18 +10,18 @@ Prosta gra turowa typu 'city builder' zrobiona w Unity z kursu Zenva Academy
 - Możliwość nawigacji kamerą: przybliżanie i oddalanie (Scroll) oraz przesuwanie (ŚPM)
 - Aktualizacja danych po każdej turze
 - Przy każdej turze obliczane są:
--- Praca:
---- Wolne miejsca = liczba fabryk * 10
---- Osoby pracujące = MIN(populacja, wolne miejsca)
--- Pieniądze:
---- Pieniądze += osoby pracujące * 2
--- Jedzenie:
---- Jedzenie += liczba farm * 4
---- Jedzenie -= populacja * 0.25 (jeden człowieka zjada 0.25 jedzenia)
--- Populacja:
---- Limit populacji = liczba domów * 5
---- Jeśli jest wystarczająco jedzenia to populacja rośnie 
---- Jeśli brakuje jedzenia to populacja spada
+-- Praca:<br>
+--- Wolne miejsca = liczba fabryk * 10<br>
+--- Osoby pracujące = MIN(populacja, wolne miejsca)<br>
+-- Pieniądze:<br>
+--- Pieniądze += osoby pracujące * 2<br>
+-- Jedzenie:<br>
+--- Jedzenie += liczba farm * 4<br>
+--- Jedzenie -= populacja * 0.25 (jeden człowieka zjada 0.25 jedzenia)<br>
+-- Populacja:<br>
+--- Limit populacji = liczba domów * 5<br>
+--- Jeśli jest wystarczająco jedzenia to populacja rośnie<br>
+--- Jeśli brakuje jedzenia to populacja spada<br>
 
 
 ## Do zrobienia
