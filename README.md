@@ -9,7 +9,7 @@ Prosta gra turowa typu 'city builder' zrobiona w Unity z kursu Zenva Academy
 - Ponadto możliwość stawiania wielu budynków na raz trzymając lewy shift
 - Możliwość nawigacji kamerą: przybliżanie i oddalanie (Scroll) oraz przesuwanie (ŚPM)
 - Aktualizacja danych po każdej turze
-- Przy każdej turze obliczane są:
+- Przy każdej turze obliczane są:<br>
 -- Praca:<br>
 --- Wolne miejsca = liczba fabryk * 10<br>
 --- Osoby pracujące = MIN(populacja, wolne miejsca)<br>
