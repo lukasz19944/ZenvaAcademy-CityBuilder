@@ -14,6 +14,8 @@ public class City : MonoBehaviour {
 
     public int[] buildingCounts = new int[4];
 
+    public AudioSource endTurnSound;
+
     private UIController uiController;
 
 	// Use this for initialization
@@ -46,6 +48,8 @@ public class City : MonoBehaviour {
             "Jobs: {0}/{1}, Cash: {2}, Population: {3}/{4}, Food: {5}",
             JobsCurrent, JobsCeiling, Cash, PopulationCurrent, PopulationCeiling, Food
         );
+
+        endTurnSound.Play();
     }
 
     void CalculateJobs() {

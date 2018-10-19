@@ -37,7 +37,9 @@ public class CameraController : MonoBehaviour {
         if (dragging) {
             transform.position = mouseOriginPoint - offset;
         }
-        
 
+        float xAxisValue = Input.GetAxis("Horizontal");
+        float yAxisValue = Input.GetAxis("Vertical");
+        transform.Translate(new Vector3(xAxisValue, yAxisValue, 0f));
     }
 }

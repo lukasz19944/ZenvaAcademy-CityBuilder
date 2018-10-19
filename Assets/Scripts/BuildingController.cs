@@ -15,9 +15,11 @@ public class BuildingController : MonoBehaviour {
     private Board board;
     private Building selectedBuilding;
 
+    private bool selected = false;
+
 	// Use this for initialization
 	void Start () {
-		
+
 	}
 	
 	// Update is called once per frame
@@ -37,35 +39,51 @@ public class BuildingController : MonoBehaviour {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        // jesli kliknieto na jakis obszar mapy
-        if (Physics.Raycast(ray, out hit)) {
-            Vector3 gridPosition = board.CalculateGridPosition(hit.point);
+        if (selected) {
+            // jesli kliknieto na jakis obszar mapy
+            if (Physics.Raycast(ray, out hit)) {
+                Vector3 gridPosition = board.CalculateGridPosition(hit.point);
 
-            // !EventSystem.current.IsPointerOverGameObject() zapobiega stawiania budynkow
-            // w momencie klikniecia przycisku w menu budowy (ogolnie dziala na wszystkie lementy UI)
-            if (!EventSystem.current.IsPointerOverGameObject()) {
-                if (action == 0 && board.CheckForBuildingAtPosition(gridPosition) == null) {
-                    if (city.Cash >= selectedBuilding.cost) {
-                        city.DepositCash(-selectedBuilding.cost);
+                // !EventSystem.current.IsPointerOverGameObject() zapobiega stawiania budynkow
+                // w momencie klikniecia przycisku w menu budowy (ogolnie dziala na wszystkie lementy UI)
+                if (!EventSystem.current.IsPointerOverGameObject()) {
+                    if (action == 0 && board.CheckForBuildingAtPosition(gridPosition) == null) {
+                        if (city.Cash >= selectedBuilding.cost) {
+                            city.DepositCash(-selectedBuilding.cost);
+                            uiController.UpdateCityData();
+                            city.buildingCounts[selectedBuilding.id]++;
+
+                            board.AddBuilding(selectedBuilding, gridPosition);
+                        }
+                    } else if (action == 1 && board.CheckForBuildingAtPosition(gridPosition) != null) {
+                        city.DepositCash(board.CheckForBuildingAtPosition(gridPosition).cost / 2);
+
+                        board.RemoveBuilding(gridPosition);
+
                         uiController.UpdateCityData();
-                        city.buildingCounts[selectedBuilding.id]++;
-
-                        board.AddBuilding(selectedBuilding, gridPosition);
                     }
-                } else if (action == 1 && board.CheckForBuildingAtPosition(gridPosition) != null) {
-                    city.DepositCash(board.CheckForBuildingAtPosition(gridPosition).cost / 2);
-
-                    board.RemoveBuilding(gridPosition);
-
-                    uiController.UpdateCityData();
                 }
             }
         }
     }
 
     // po kliknieciu na budynek w menu budowy ustawia odpowiedni indeks budynku do zbudowania
+    // mechanizm odkliknięcia, ponownie kliknięcie na przycisk odklikuje go (raczej nie najlepiej zrobione)
     public void EnableBuilder(int buildingIndex) {
-        selectedBuilding = buildings[buildingIndex];
-        Debug.Log("Selected building: " + selectedBuilding.buildingName);
+        if (selectedBuilding != null) {
+            if (buildingIndex != selectedBuilding.id) {
+                selectedBuilding = buildings[buildingIndex];
+                Debug.Log("Selected building: " + selectedBuilding.id);
+
+                selected = true;
+            } else {
+                selectedBuilding = null;
+                selected = false;
+            }
+        } else {
+            selectedBuilding = buildings[buildingIndex];
+            selected = true;
+        }
+
     }
 }
