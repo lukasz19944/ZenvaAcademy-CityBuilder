@@ -11,9 +11,11 @@ public class CameraController : MonoBehaviour {
 
     private bool dragging = false;
 
+    private Vector3 startingPosition;
+
 	// Use this for initialization
 	void Start () {
-		
+        startingPosition = transform.position;
 	}
 	
 	// Update is called once per frame
@@ -41,5 +43,10 @@ public class CameraController : MonoBehaviour {
         float xAxisValue = Input.GetAxis("Horizontal");
         float yAxisValue = Input.GetAxis("Vertical");
         transform.Translate(new Vector3(xAxisValue, yAxisValue, 0f));
+
+        // focus
+        if (Input.GetKeyDown(KeyCode.F)) {
+            transform.position = startingPosition;  // zmienic na na bardziej plynne
+        }
     }
 }

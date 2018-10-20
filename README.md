@@ -27,9 +27,7 @@ Prosta gra turowa typu 'city builder' zrobiona w Unity z kursu Zenva Academy
 ## Do zrobienia
 - Zablokowanie możliwości stawiania budynków na krawędziach mapy
 - Aktualizacja parametrów miasta w przypadku usuwania budynków (np. obecnie po usunięciu domu populacja nie zmienia się, a powinna zmaleć o 5)
-- Dodanie menu
 - Dodanie poziomu trudności
-- Dodanie możliwości wyboru wielkości mapy
 - Wyświetlanie informacji o liczbie poszczególnych budynków w UI
 - Przy nawigacji dodać limity poruszania w osiach x i y
 - Podświetlanie wybranego przycisku w menu budowy
@@ -37,5 +35,5 @@ Prosta gra turowa typu 'city builder' zrobiona w Unity z kursu Zenva Academy
 
 ## Źródło
 https://academy.zenva.com/product/create-a-city-building-game-with-unity/
-https://freesound.org/people/D%20W/sounds/140374/
+https://freesound.org/people/D%20W/sounds/140374/ <br>
 https://freesound.org/people/ohnoimdead/sounds/48631/
